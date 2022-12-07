@@ -1,6 +1,7 @@
 
 
 
+import { DELETEPRODUCT } from "../products/ProActionType";
 import { GETERROR, GETPRODUCT, LOADPRODUCT } from "./newsActionType";
 
 const init = {
@@ -23,7 +24,7 @@ export const userReducer = (store=init,{type,payload}) =>{
        ...store,
        loading:false,
        error:false,
-       news:payload
+       user:payload
       }
       case GETERROR :
         return{
@@ -31,6 +32,8 @@ export const userReducer = (store=init,{type,payload}) =>{
          loading:false,
          error:true
         }  
+
+   
     default:
      return store;
   }

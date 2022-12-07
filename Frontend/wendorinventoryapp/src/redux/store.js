@@ -1,6 +1,7 @@
 
 import { applyMiddleware, combineReducers,  compose,  legacy_createStore } from "redux";
 import thunk from "redux-thunk";
+import { proReducer } from "./products/ProReducer";
 
 
 const composeEnhancers =
@@ -11,7 +12,7 @@ const composeEnhancers =
     }) : compose;
 
 const rootReducer=combineReducers({
-  
+  products : proReducer 
 })
 
 const store=legacy_createStore (rootReducer,composeEnhancers(applyMiddleware(thunk)));

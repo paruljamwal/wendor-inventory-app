@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GETERROR, GETPRODUCT, LOADPRODUCT } from "./newsActionType"
+import { GETERROR, GETPRODUCT, LOADPRODUCT } from "./ProActionType"
 
 const loadProduct = () =>{
     return {
@@ -25,7 +25,15 @@ const getError =(payload)=>{
 
 export const fetchData = (payload) =>(dispatch)=>{
   dispatch(loadProduct())
-  return axios(`https://newsapi.org/v2/everything?q=tesla&from=2022-11-06&sortBy=publishedAt&_page=2&_limit=4&apiKey=620fa243679f4939bfd1ae9e23dc9701`)
-  .then((r)=>dispatch(getProduct(r.data.articles)))
+  return axios(`https://reqres.in/api/users`)
+  .then((r)=>dispatch(getProduct(r.data)))
   .catch(e=>dispatch(getError(e)))
 }
+
+export const deleteData = (id) =>(dispatch)=>{
+    dispatch(loadProduct())
+    return axios.delete(`https://reqres.in/api/users/${id}`)
+    .then((r)=>dispatch(getProduct(r.data)))
+    .catch(e=>dispatch(getError(e)))
+  }
+  

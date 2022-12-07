@@ -1,4 +1,4 @@
-import { GETERROR, GETPRODUCT, LOADPRODUCT } from "./newsActionType";
+import { DELETEPRODUCT, GETERROR, GETPRODUCT, LOADPRODUCT } from "./ProActionType";
 
 const init = {
   loading : false,
@@ -6,7 +6,7 @@ const init = {
   product : []
 }
 
-export const newsReducer = (store=init,{type,payload}) =>{
+export const proReducer = (store=init,{type,payload}) =>{
   // console.log(payload);
   switch (type) {
     case LOADPRODUCT :
@@ -20,7 +20,7 @@ export const newsReducer = (store=init,{type,payload}) =>{
        ...store,
        loading:false,
        error:false,
-       news:payload
+       product:payload
       }
       case GETERROR :
         return{
@@ -28,6 +28,12 @@ export const newsReducer = (store=init,{type,payload}) =>{
          loading:false,
          error:true
         }  
+        case DELETEPRODUCT:
+          let delTask = store.userTask.filter((e)=>e.id !== payload);
+          return {
+            ...store,
+            product:delTask
+          }
     default:
      return store;
   }

@@ -2,3 +2,5 @@
 export const LOADPRODUCT = "LOADPRODUCT";
 export const GETPRODUCT = "GETPRODUCT";
 export const GETERROR = "GETERROR";
+
+export const DELETEPRODUCT="DELETEPRODUCT";
